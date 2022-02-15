@@ -7,6 +7,7 @@ import 'package:built_value_example/user.dart';
 void consumeJson(String jsonBody) {
   //it is requried that we convert to a json map first, then the
   var result = convert.jsonDecode(jsonBody);
+  //the value of `u` can potentially be `null` here
   var u = serializers.deserializeWith(User.serializer, result);
   print("User instance from JSON: $u");
 }
@@ -20,7 +21,8 @@ void produceJson() {
     ..email = "bobloblaw@lawman.com"
     ..age = 33);
 
-  var jsonStringBody = serializers.serializeWith(User.serializer, u);
+  var serialzeMe = serializers.serializeWith(User.serializer, u);
+  var jsonStringBody = convert.jsonEncode(serialzeMe);
   print("Encoded JSON body: $jsonStringBody");
 }
 
