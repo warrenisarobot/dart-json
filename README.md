@@ -40,7 +40,7 @@ This is great for prototyping, but does not use any static types.  Dart JSON sol
 * Construct a dart class that takes a JSON `Map<String, dynamic>` as its parameter
 * The constructor assigns the Instance's property to the correponding JSON map's key value, if it exists
 
-An example of this pattern is on the [flutter site](https://docs.flutter.dev/development/data-and-backend/json#serializing-json-inside-model-classes).  When we are the producer of JSON and we already have a class witht the properties we want this adds boilerplate and can be repetitive.  There are code generation solutions for this as well.
+An example of this pattern is on the [flutter site](https://docs.flutter.dev/development/data-and-backend/json#serializing-json-inside-model-classes).  When we are the _producer_ of a service and we are the authoritive source on what JSON is sent and received, and we already have a class with the properties we want, this adds boilerplate and can be repetitive.  There are code generation solutions for this as well.
 
 
 ## Code Generation
@@ -160,3 +160,14 @@ var user = serializers.deserializeWith(User.serializer, jsonMap);
 jsonMap = serializers.serializeWith(User.serializer, user);
 jsonBody = jsonEncode(jsonMap);
 ```
+
+
+###  JSON serialization as a client
+
+When we are client to a server that is consuming and producing JSON sometimes the data isn't clearly defined, or we only have example JSON payloads.  In these cases there are sites that can help us create a dart class so that we can serialize / deserialize JSON to the class.  These tools can remove some of the manual process of converting a schema from API website documentation, or when there is no documentation and we only have JSON payloads.
+
+[Quicktype](https://app.quicktype.io/) produces a dart class with `fromJson()` and `toJson()` methods similar to code that would be manually generated.  This does not need dart code generation after the fact, and the code can be customized as needed.
+
+[json2builtvalue](https://charafau.github.io/json2builtvalue/) converts the JSON payload to built_value boilerplate.  The dart code generator can then be run on this to generate the rest of the code needed for a built_value.  This gives built_value features without having to build the class manually.  Customizations would then be done on the template code, and regenerated if necessary.
+
+There aren't solutions that I have seen for generating a template for JsonSerializable.  The solutions that produce manual code, like Quicktype, would be better in these cases since JsonSerializable is only providing the `toJson` and `fromJson` methods.
