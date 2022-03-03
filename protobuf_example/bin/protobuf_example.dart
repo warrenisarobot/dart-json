@@ -1,21 +1,23 @@
 import 'dart:convert';
 
-import 'package:protobuf_example/src/generated/helloworld.pb.dart';
+import 'package:protobuf_example/src/generated/user.pb.dart';
 
 import 'package:protobuf/protobuf.dart';
 
 void main(List<String> arguments) {
-  // create the object using builder pattern
-  final HelloRequest helloRequest = HelloRequest.create()
-    ..firstName = 'John'
-    ..lastName = 'Smith';
+  final User user = User.create()
+    ..firstName = "bob"
+    ..lastName = "loblaw"
+    ..username = "lawman"
+    ..email = "bobloblaw@lawman.com"
+    ..age = 33;
+  print('Original:\n$user');
 
   // serialize
-  var json = jsonEncode(helloRequest.toProto3Json());
-  print(json);
+  var json = jsonEncode(user.toProto3Json());
+  print('Serialized JSON: $json\n');
 
   // deserialize
-  var request = HelloRequest.create()..mergeFromProto3Json(jsonDecode(json));
-  print("First name: ${request.firstName}");
-  print("Last name: ${request.lastName}");
+  var deserializedUser = User.create()..mergeFromProto3Json(jsonDecode(json));
+  print('Deserialized:\n$deserializedUser');
 }

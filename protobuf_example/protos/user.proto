@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package previ;
+
+message User {
+  string first_name = 1;
+  string last_name = 2;
+  string username = 3;
+  string email = 4;
+  uint32 age = 5;
+}
