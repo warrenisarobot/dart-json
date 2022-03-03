@@ -3,31 +3,30 @@
 //  source: helloworld.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
-import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class HelloRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'HelloRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'helloworld'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'justAnotherTest', protoName: 'justAnotherTest')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'firstName')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lastName')
     ..hasRequiredFields = false
   ;
 
   HelloRequest._() : super();
   factory HelloRequest({
-    $core.String? name,
-    $core.String? justAnotherTest,
+    $core.String? firstName,
+    $core.String? lastName,
   }) {
     final _result = create();
-    if (name != null) {
-      _result.name = name;
+    if (firstName != null) {
+      _result.firstName = firstName;
     }
-    if (justAnotherTest != null) {
-      _result.justAnotherTest = justAnotherTest;
+    if (lastName != null) {
+      _result.lastName = lastName;
     }
     return _result;
   }
@@ -53,22 +52,22 @@ class HelloRequest extends $pb.GeneratedMessage {
   static HelloRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get name => $_getSZ(0);
+  $core.String get firstName => $_getSZ(0);
   @$pb.TagNumber(1)
-  set name($core.String v) { $_setString(0, v); }
+  set firstName($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasName() => $_has(0);
+  $core.bool hasFirstName() => $_has(0);
   @$pb.TagNumber(1)
-  void clearName() => clearField(1);
+  void clearFirstName() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get justAnotherTest => $_getSZ(1);
+  $core.String get lastName => $_getSZ(1);
   @$pb.TagNumber(2)
-  set justAnotherTest($core.String v) { $_setString(1, v); }
+  set lastName($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasJustAnotherTest() => $_has(1);
+  $core.bool hasLastName() => $_has(1);
   @$pb.TagNumber(2)
-  void clearJustAnotherTest() => clearField(2);
+  void clearLastName() => clearField(2);
 }
 
 class HelloReply extends $pb.GeneratedMessage {
@@ -116,19 +115,5 @@ class HelloReply extends $pb.GeneratedMessage {
   $core.bool hasMessage() => $_has(0);
   @$pb.TagNumber(1)
   void clearMessage() => clearField(1);
-}
-
-class GreeterApi {
-  $pb.RpcClient _client;
-  GreeterApi(this._client);
-
-  $async.Future<HelloReply> sayHello($pb.ClientContext? ctx, HelloRequest request) {
-    var emptyResponse = HelloReply();
-    return _client.invoke<HelloReply>(ctx, 'Greeter', 'SayHello', request, emptyResponse);
-  }
-  $async.Future<HelloReply> sayHelloAgain($pb.ClientContext? ctx, HelloRequest request) {
-    var emptyResponse = HelloReply();
-    return _client.invoke<HelloReply>(ctx, 'Greeter', 'SayHelloAgain', request, emptyResponse);
-  }
 }
 
