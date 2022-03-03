@@ -29,3 +29,19 @@ const HelloReply$json = const {
 
 /// Descriptor for `HelloReply`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List helloReplyDescriptor = $convert.base64Decode('CgpIZWxsb1JlcGx5EhgKB21lc3NhZ2UYASABKAlSB21lc3NhZ2U=');
+const $core.Map<$core.String, $core.dynamic> GreeterServiceBase$json = const {
+  '1': 'Greeter',
+  '2': const [
+    const {'1': 'SayHello', '2': '.helloworld.HelloRequest', '3': '.helloworld.HelloReply', '4': const {}},
+    const {'1': 'SayHelloAgain', '2': '.helloworld.HelloRequest', '3': '.helloworld.HelloReply', '4': const {}},
+  ],
+};
+
+@$core.Deprecated('Use greeterServiceDescriptor instead')
+const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> GreeterServiceBase$messageJson = const {
+  '.helloworld.HelloRequest': HelloRequest$json,
+  '.helloworld.HelloReply': HelloReply$json,
+};
+
+/// Descriptor for `Greeter`. Decode as a `google.protobuf.ServiceDescriptorProto`.
+final $typed_data.Uint8List greeterServiceDescriptor = $convert.base64Decode('CgdHcmVldGVyEj4KCFNheUhlbGxvEhguaGVsbG93b3JsZC5IZWxsb1JlcXVlc3QaFi5oZWxsb3dvcmxkLkhlbGxvUmVwbHkiABJDCg1TYXlIZWxsb0FnYWluEhguaGVsbG93b3JsZC5IZWxsb1JlcXVlc3QaFi5oZWxsb3dvcmxkLkhlbGxvUmVwbHkiAA==');
