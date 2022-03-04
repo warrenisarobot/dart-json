@@ -7,8 +7,9 @@ import 'package:protobuf_example/src/generated/transaction.pb.dart';
 import 'package:fixnum/fixnum.dart' as $fixnum;
 
 void main(List<String> arguments) {
+  print("############ User #############################");
   userExample();
-  print("#######################################");
+  print("############ Transaction ######################");
   transactionExample();
 }
 
