@@ -23,7 +23,8 @@ void userExample() {
     ..age = 33;
   print('Original:\n$user');
 
-  // can optionally make the object immutable, if you try to modify the object, you get: Unsupported operation: Attempted to change a read-only message (previ.User)
+  // can optionally make the object immutable
+  // Unsupported operation: Attempted to change a read-only message (previ.User)
   user.freeze();
 
   // serialization
