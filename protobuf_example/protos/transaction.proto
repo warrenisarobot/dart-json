@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package previ;
+
+import "google/type/money.proto";
+
+message Transaction {
+  string category = 1;
+  google.type.Money amount = 2;
+}
