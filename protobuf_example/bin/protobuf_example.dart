@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
 
 import 'package:protobuf_example/src/generated/google/type/money.pb.dart';
 import 'package:protobuf_example/src/generated/user.pb.dart';
